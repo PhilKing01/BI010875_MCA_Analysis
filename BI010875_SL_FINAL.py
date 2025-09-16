@@ -1,12 +1,25 @@
 import pandas as pd
 import streamlit as st
 import plotly.graph_objects as go
+import os
 
 st.set_page_config(layout="wide")
 
+# ---- Determine file path ----
+# Default: relative path (works on Streamlit Cloud if Data_files is in repo)
+relative_path = "Data_files/BI010875 MCA Analysis DATA MASTER v0.1.xlsx"
+local_path = "/home/king/projects/BI010875_MCA/Data_files/BI010875 MCA Analysis DATA MASTER v0.1.xlsx"
+
+if os.path.exists(relative_path):
+    file_path = relative_path
+elif os.path.exists(local_path):
+    file_path = local_path
+else:
+    raise FileNotFoundError("Excel data file not found in either location!")
+
 # ---- Load data ----
-file_path = "/home/king/projects/BI010875_MCA/Data_files/BI010875 MCA Analysis DATA MASTER v0.1.xlsx"
 df = pd.read_excel(file_path, sheet_name="DATA", header=3)
+
 
 # ---- Drop first unnamed column if exists ----
 if df.columns[0].startswith("Unnamed"):

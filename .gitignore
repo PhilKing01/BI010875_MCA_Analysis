@@ -1,20 +1,17 @@
-# Python
+# Ignore virtual environment
+.venv/
+venv/
+
+# Ignore Python cache files
 __pycache__/
 *.pyc
 *.pyo
 *.pyd
-.venv/
-venv/
-.env
 
-# VS Code
-.vscode/
+# Ignore Jupyter notebook checkpoints
+.ipynb_checkpoints/
 
-# OS files
+# Ignore system files
 .DS_Store
 Thumbs.db
 
-# Temporary or backup files
-*.tmp
-*.bak
-*.Zone.Identifier
